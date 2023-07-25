@@ -88,8 +88,9 @@ const signMessageAsync = async (arJWK, address, everHash) => {
         };
         try {
             const signature = await window.arweaveWallet.signature(everHashUnit8Array, algorithm);
-            const buf = new Uint8Array(Object.values(signature));
-            signatureB64url = toUrlSafeBase64(buf);
+            console.log("signature:", signature);
+            const buf = signature;
+            signatureB64url = arweave_1.default.utils.bufferTob64Url(buf);
         }
         catch (e) {
             console.log("Signature error: ", e);
