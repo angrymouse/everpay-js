@@ -103,12 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-lib
 
-cjs
-
-esm
-
-umd
 
 test/constants/wallet.ts

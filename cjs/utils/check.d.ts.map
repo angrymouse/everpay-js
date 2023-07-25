@@ -1,0 +1,1 @@
+{"version":3,"file":"check.d.ts","sourceRoot":"","sources":["../../src/utils/check.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,EAA4B,MAAM,UAAU,CAAA;AAmBtE,eAAO,MAAM,SAAS,aAAc,MAAM,UAAU,OAAO,KAAG,IAgB7D,CAAA;AAED,eAAO,MAAM,WAAW,WAAY,OAAO,MAAM,EAAE,OAAO,CAAC,KAAG,IAE7D,CAAA;AAED,eAAO,MAAM,eAAe,gBAAiB,SAAS,UAAU,MAAM,KAAG,IAMxE,CAAA"}
