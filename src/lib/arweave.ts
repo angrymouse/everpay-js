@@ -91,9 +91,10 @@ const signMessageAsync = async (arJWK: ArJWK, address: string, everHash: string)
         everHashUnit8Array,
         algorithm
       )
-      console.log("signature:", signature)
+      // console.log("signature:", signature)
       const buf = signature
       signatureB64url = Arweave.utils.bufferTob64Url(buf)
+      console.log(signatureB64url)
     } catch (e) {
       console.log("Signature error: ", e)
       throw new Error(ERRORS.SIGNATURE_FAILED)
