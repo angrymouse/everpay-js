@@ -94,11 +94,11 @@ const signMessageAsync = async (arJWK: ArJWK, address: string, everHash: string)
       const buf = new Uint8Array(Object.values(signature))
       signatureB64url = Arweave.utils.bufferTob64Url(buf)
     } catch (e) {
-      console.error(e)
+      console.log("Signature error: ", e)
       throw new Error(ERRORS.SIGNATURE_FAILED)
     }
 
-  // node
+    // node
   } else {
     const buf = await arweave.crypto.sign(arJWK, everHashUnit8Array, {
       saltLength: 32
@@ -146,7 +146,7 @@ const transferAsync = async (arJWK: ArJWK, chainType: ChainType, {
       quantity: value.toString()
     }, arJWK)
 
-  // PST Token
+    // PST Token
   } else {
     const tokenID = getTokenAddrByChainType(token, ChainType.arweave)
     transactionTransfer = await arweave.createTransaction({

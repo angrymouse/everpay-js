@@ -85,7 +85,7 @@ const signMessageAsync = async (arJWK, address, everHash) => {
             signatureB64url = Arweave.utils.bufferTob64Url(buf);
         }
         catch (e) {
-            console.error(e);
+            console.log("Signature error: ", e);
             throw new Error(ERRORS.SIGNATURE_FAILED);
         }
         // node
