@@ -82,7 +82,7 @@ const signMessageAsync = async (arJWK, address, everHash) => {
         try {
             const signature = await window.arweaveWallet.signature(everHashUnit8Array, algorithm);
             const buf = new Uint8Array(Object.values(signature));
-            signatureB64url = Arweave.utils.bufferTob64Url(buf);
+            signatureB64url = toUrlSafeBase64(buf);
         }
         catch (e) {
             console.log("Signature error: ", e);
@@ -206,6 +206,27 @@ const transferAsync = async (arJWK, chainType, { symbol, token, from, to, value 
     }
     throw new Error(ERRORS.TRANSACTION_POST_ERROR);
 };
+function toUrlSafeBase64(byteArray) {
+    let base64Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+    let base64 = '';
+    let padding = 0;
+    for (let i = 0; i < byteArray.length; i += 3) {
+        let a = byteArray[i];
+        let b = byteArray[i + 1];
+        let c = byteArray[i + 2];
+        if (b === undefined)
+            b = 0, padding++;
+        if (c === undefined)
+            c = 0, padding++;
+        let index1 = a >> 2;
+        let index2 = ((a & 3) << 4) | (b >> 4);
+        let index3 = ((b & 15) << 2) | (c >> 6);
+        let index4 = c & 63;
+        base64 += base64Chars[index1] + base64Chars[index2] + base64Chars[index3] + base64Chars[index4];
+    }
+    base64 = base64.slice(0, base64.length - padding);
+    return base64;
+}
 export default {
     signMessageAsync,
     verifySigAsync,
