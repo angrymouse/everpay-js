@@ -51,7 +51,7 @@ const toArrayBuffer = (buffer) => {
 };
 const signMessageAsync = async (arJWK, address, everHash) => {
     const arweave = Arweave.init(options);
-    const everHashUnit8Array = toArrayBuffer(Buffer.from(everHash.slice(2), 'hex'));
+    const everHashUnit8Array = Buffer.from(everHash.slice(2), 'hex');
     let arOwner = '';
     let signatureB64url = '';
     // web
